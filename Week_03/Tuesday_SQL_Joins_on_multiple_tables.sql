@@ -7,7 +7,7 @@ from store
 join address using (address_id)
 join city using (city_id)
 join country using (country_id)
-group by store_id, city, country
+group by store_id
 
 # 2. Write a query to display how much business, in dollars, each store brought in.
 
