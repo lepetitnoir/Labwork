@@ -32,7 +32,6 @@ order by name ASC
 select first_name, last_name, address
 from staff
 join address using (address_id)
-group by first_name, last_name, address
 order by first_name DESC
 
 # 5. Display the total amount rung up by each staff member in August of 2005.
@@ -40,7 +39,7 @@ order by first_name DESC
 select first_name, last_name, sum(amount)
 from staff
 join payment using (staff_id)
-where payment_date between 050801 and 050831
+where payment_date between "2005-08-01" and "2005-08-31"
 group by first_name, last_name
 order by sum(amount) DESC
 
@@ -59,7 +58,7 @@ limit 10
 select first_name, last_name, sum(amount)
 from customer
 join payment using (customer_id)
-group by first_name, last_name
+group by customer_id
 order by last_name ASC
 limit 10
 
@@ -75,4 +74,6 @@ join rental using (inventory_id)
 group by film_id
 order by count(film_id) DESC
 limit 1
+
+# Hint: You only need title even though it's a counting task because all columns are joined 
 

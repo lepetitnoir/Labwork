@@ -17,3 +17,17 @@ join staff using (store_id)
 join payment using (staff_id)
 group by store_id
 
+# 3. What is the average running time(length) of films by category?
+
+# 4. Which film categories are longest(length) (find Top 5)? (Hint: You can rely on question 3 output.)
+
+# 5. Display the top 5 most frequently(number of times) rented movies in descending order.
+
+# 6. List the top five genres in gross revenue in descending order.
+
+# 7. Is "Academy Dinosaur" available for rent from Store 1?
+
+
+
+
+
