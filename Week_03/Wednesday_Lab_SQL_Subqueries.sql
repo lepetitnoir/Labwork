@@ -57,12 +57,36 @@ select first_name, last_name, email from customer where address_id in
 # Most prolific actor is defined as the actor that has acted in the most number of films.
 # First you will have to find the most prolific actor and then use that actor_id to find the different films that he/she starred.
 
-select actor_id
-from actor 
-where actor_id in
-(select actor_id from film_actor where film_id in
-(select film_id from film))
+# getting most prolific actor by join-function
 
+select actor_id, count(film_id)
+from actor
+join film_actor using (actor_id)
+join film using (film_id)
+group by actor_id
+order by count(film_id) DESC
+limit 1
 
+# getting title of films of most prolific actor by subquery (actor_id)
+
+select title
+from film
+where film_id in
+(select film_id 
+from film_actor
+where actor_id = "107")
+
+# getting most prolific actor and movie titles with two subqueries and group by
+
+select title 
+from film 
+where film_id in
+(select film_id
+from film_actor
+where actor_id =
+(select actor_id
+from film_actor
+group by actor_id
+order by count(film_id) desc limit 1))
 
 
